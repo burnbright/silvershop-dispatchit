@@ -33,15 +33,12 @@ class DispatchITExporter extends Controller{
 		$output = "";
 
 		if($orders){
-			
 			foreach($orders as $order){
-
 				$address = $order->getShippingAddress();
 				$name = $address->Company; //TODO: company
 				if(!$name || $name == ""){
 					$name = $order->Name;
 				}
-
 				$line = array(
 					$order->ID,			//ConsignmentNumber	char(12)	Yes	Tracking number.  Must be unique.
 					$order->MemberID, //CustomerID			char(20)	Blank if ommitted
@@ -74,15 +71,12 @@ class DispatchITExporter extends Controller{
 				//name format: DDcxxxxxxx.TXT
 			$filename = "DDc".uniqid()."_".date('YmdHis').".txt";
 			$exportpath = ASSETS_PATH."/_dispatchitexports";
-			
 			if(!is_dir($exportpath)){
 				mkdir($exportpath);
 			}
 			$file = fopen($exportpath."/$filename","w+");
 			fwrite($file, $output);
 			fclose($file);
-			//TODO: update dispatched status (ie store the fact we've exported this record)
-
 		}else{
 			$output = "no new orders";
 		}
