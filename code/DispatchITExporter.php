@@ -45,18 +45,18 @@ class DispatchITExporter extends Controller{
 					$address->Suburb,	//Address3				char(40)	Blank if ommitted
 					$address->State,	//Address4				char(40)	Blank if ommitted
 					$address->City,		//Address5			char(40)	Must be valid suburb/city/town.
-					"".					//CustOrderRef			char(30)	Blank if ommitted
+					"",					//CustOrderRef			char(30)	Blank if ommitted
 					"0",					//Carrier				smallint	Yes	0 = NZ Couriers
 					"1",					//CostCentre			smallint	Yes	1 = Primary cost centre.
-					"".					//PhoneSTD				char(4)	Blank if ommitted
+					"",					//PhoneSTD				char(4)	Blank if ommitted
 					$address->Phone,	//PhoneNumber			char(20)	Blank if ommitted
-					"".					//FaxSTD					char(4)	Blank if ommitted
+					"",					//FaxSTD					char(4)	Blank if ommitted
 					$order->Fax,		//FaxNumber				char(20)	Blank if ommitted
 					$order->Email,		//EmailAddress			char(255)Blank if ommitted
 					"1",					//EmailAddressSend	bit		TRUE or FALSE
-					"".					//EmailAddress2		char(255)Blank if ommitted
+					"",					//EmailAddress2		char(255)Blank if ommitted
 					"0",					//EmailAddress2Send	bit		TRUE or FALSE
-					"".					//EmailAddress3		char(255)Blank if ommitted
+					"",					//EmailAddress3		char(255)Blank if ommitted
 					"0"					//EmailAddress3Send	bit		TRUE or FALSE;
 				);
 				$output .= implode("\t",$line)."\n";
