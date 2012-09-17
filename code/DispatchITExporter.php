@@ -41,7 +41,7 @@ class DispatchITExporter extends Controller{
 					$order->MemberID, //CustomerID			char(20)	Blank if ommitted
 					$name,				//CompanyName			char(40)	Yes
 					$address->Address,	//Address1			char(40)	Yes
-					$order->AddressLine2,	//Address2		char(40)	Yes
+					$address->AddressLine2,	//Address2		char(40)	Yes
 					$address->Suburb,	//Address3				char(40)	Blank if ommitted
 					$address->State,	//Address4				char(40)	Blank if ommitted
 					$address->City,		//Address5			char(40)	Must be valid suburb/city/town.
