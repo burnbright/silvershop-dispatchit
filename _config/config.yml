@@ -1,0 +1,10 @@
+---
+Name: shop_dispatchit
+After: "shop/*"
+---
+Director:
+  rules:
+    'dispatchitexporter//$Action/$ID': 'DispatchITExporter'
+Order:
+  extensions:
+    - DispatchITOrderDecorator

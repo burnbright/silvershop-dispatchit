@@ -1,13 +1,9 @@
 <?php
 
-class DispatchITOrderDecorator extends DataObjectDecorator{
+class DispatchITOrderDecorator extends DataExtension{
 	
-	function extraStatics(){
-		return array(
-			'db' => array(
-				'SentToDispatchIT' => 'Boolean' 
-			)
-		);
-	}
+	private static $db = array(
+		'SentToDispatchIT' => 'Boolean'
+	);
 	
 }
