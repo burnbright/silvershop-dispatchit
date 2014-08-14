@@ -23,13 +23,14 @@ class DispatchITExporter extends Controller{
 	}
 
 	function export(){
-		$states = "'".implode("','",Order::$placed_status)."'";
-		$filter = "\"SentToDispatchIT\" = FALSE AND \"Order\".\"Status\" IN($states) AND \"Address\".\"Country\" = 'NZ'";
-		$sort = "\"Placed\" ASC, \"Created\" ASC";
-		$join = "INNER JOIN \"Address\" ON \"Order\".\"ShippingAddressID\" = \"Address\".\"ID\"";
-		$orders = DataObject::get('Order',$filter,"",$join);
+		$orders = Order::get()
+					->innerJoin("Address","\"Order\".\"ShippingAddressID\" = \"Address\".\"ID\"")
+					->filter("SentToDispatchIT", 0)
+					->filter("Status",Order::config()->placed_status)
+					->filter("Address.Country", "NZ")
+					->sort(array("Placed" => "ASC", "Created" => "ASC"));
 		$output = "";
-		if($orders){
+		if($orders->exists()){
 			foreach($orders as $order){
 				$address = $order->getShippingAddress();
 				$name = $address->Company; //TODO: company
